@@ -33,6 +33,8 @@ jobs:
       # 4. Build the Vite production bundle → output goes to dist/
       - name: Build
         run: npm run build
+        env:
+          VITE_BASE_PATH: /Antigravity-Expense-Tracker/
 
       # 5. Deploy dist/ to the gh-pages branch
       - name: Deploy to gh-pages

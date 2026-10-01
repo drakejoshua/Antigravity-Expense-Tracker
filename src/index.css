@@ -1,0 +1,236 @@
+/* ==========================================================================
+   INDEX.CSS - Design Tokens, Reset & Global Baseline Styles
+   Light & Dark Theme Counterparts with Accessible Contrast
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties (Design Tokens - Light Mode Baseline)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand & Primary Action Colors (Indigo Palette) */
+  --color-primary: #4338ca;          /* Indigo 700 - Deep, authoritative primary CTA */
+  --color-primary-hover: #3730a3;    /* Indigo 800 - Confident hover state */
+  --color-primary-active: #312e81;   /* Indigo 900 - Active state */
+  --color-primary-light: #eef2ff;    /* Indigo 50 - Subtle badge & tint background */
+  --color-primary-border: #c7d2fe;   /* Indigo 200 - Delicate accent border */
+
+  /* Functional & Semantic Status Colors */
+  --color-success: #047857;          /* Emerald 700 - Positive metric/spending display */
+  --color-success-hover: #065f46;    /* Emerald 800 */
+  --color-success-light: #ecfdf5;    /* Emerald 50 - Background badge */
+  --color-success-border: #a7f3d0;   /* Emerald 200 */
+
+  --color-danger: #dc2626;           /* Red 600 - Delete & destructive action */
+  --color-danger-hover: #b91c1c;     /* Red 700 */
+  --color-danger-light: #fef2f2;     /* Red 50 - Restrained tinted background */
+  --color-danger-border: #fecaca;    /* Red 200 - Gentle boundary */
+
+  --color-warning: #b45309;          /* Amber 700 - Edit indicator / alerts */
+  --color-warning-hover: #92400e;    /* Amber 800 */
+  --color-warning-light: #fffbeb;    /* Amber 50 */
+  --color-warning-border: #fde68a;   /* Amber 200 */
+
+  /* Light Surface & Canvas Hierarchy */
+  --color-bg: #f8fafc;               /* Slate 50 - Canvas background */
+  --color-surface: #ffffff;          /* Pure white - Elevated card container */
+  --color-surface-subtle: #f8fafc;   /* Slate 50 - Inset sections / row resting state */
+  --color-surface-hover: #f1f5f9;    /* Slate 100 - Interactive hover state */
+  --color-border: #e2e8f0;           /* Slate 200 - Crisp container border */
+  --color-border-subtle: #edf2f7;    /* Slate 150 - Inner card dividers */
+  --color-border-strong: #cbd5e1;    /* Slate 300 - Input borders & active outlines */
+
+  /* Accessible High-Contrast Text Scale */
+  --color-text: #0f172a;             /* Slate 900 - 13.9:1 AAA contrast for headings & amounts */
+  --color-text-secondary: #334155;   /* Slate 700 - 8.5:1 AAA contrast for labels & copy */
+  --color-text-muted: #64748b;       /* Slate 500 - 4.6:1 AA contrast for timestamps & subtitles */
+  --color-text-light: #94a3b8;       /* Slate 400 - Subtle icons & placeholders */
+
+  /* Typography Scale */
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --font-size-2xs: 0.6875rem;        /* 11px */
+  --font-size-xs: 0.75rem;           /* 12px */
+  --font-size-sm: 0.875rem;          /* 14px */
+  --font-size-base: 1rem;            /* 16px */
+  --font-size-lg: 1.125rem;          /* 18px */
+  --font-size-xl: 1.25rem;           /* 20px */
+  --font-size-2xl: 1.5rem;           /* 24px */
+  --font-size-3xl: 2rem;             /* 32px */
+  --font-size-4xl: 2.5rem;           /* 40px */
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;                /* 4px */
+  --space-2: 0.5rem;                 /* 8px */
+  --space-3: 0.75rem;                /* 12px */
+  --space-4: 1rem;                   /* 16px */
+  --space-5: 1.25rem;                /* 20px */
+  --space-6: 1.5rem;                 /* 24px */
+  --space-8: 2rem;                   /* 32px */
+  --space-10: 2.5rem;                /* 40px */
+  --space-12: 3rem;                  /* 48px */
+
+  /* Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Elevation Shadows (Soft Diffuse Multi-layered Shadows) */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.05);
+  --shadow-card-hover: 0 4px 12px rgba(15, 23, 42, 0.06), 0 14px 28px -6px rgba(15, 23, 42, 0.08);
+
+  /* Animation Timings */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Dark Theme Counterpart Tokens ([data-theme="dark"])
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] {
+  /* Brand & Primary Action Colors (Refined Luminous Indigo: 6.0:1 Contrast) */
+  --color-primary: #818cf8;          /* Indigo 400 - Luminous, clear accessible contrast against dark surfaces */
+  --color-primary-hover: #9ca3ff;    /* Indigo 300 - Confident, distinct hover state */
+  --color-primary-active: #6366f1;   /* Indigo 500 - Active pressed state */
+  --color-primary-light: rgba(129, 140, 248, 0.16); /* Clearly visible, tasteful indigo badge tint */
+  --color-primary-border: rgba(129, 140, 248, 0.38); /* Crisp visible boundary for badges and tags */
+
+  /* Functional & Semantic Status Colors in Dark Mode */
+  --color-success: #10b981;          /* Emerald 500 - Vivid positive metric */
+  --color-success-hover: #34d399;    /* Emerald 400 */
+  --color-success-light: rgba(16, 185, 129, 0.15);
+  --color-success-border: rgba(16, 185, 129, 0.3);
+
+  --color-danger: #f87171;           /* Red 400 - Clear, restrained destructive accent */
+  --color-danger-hover: #ef4444;     /* Red 500 */
+  --color-danger-light: rgba(239, 68, 68, 0.15);
+  --color-danger-border: rgba(239, 68, 68, 0.3);
+
+  --color-warning: #fbbf24;          /* Amber 400 - Warm alert */
+  --color-warning-hover: #f59e0b;    /* Amber 500 */
+  --color-warning-light: rgba(245, 158, 11, 0.15);
+  --color-warning-border: rgba(245, 158, 11, 0.3);
+
+  /* Dark Surface & Canvas Hierarchy */
+  --color-bg: #090d16;               /* Deep slate-charcoal canvas */
+  --color-surface: #111726;          /* Elevated card surface with distinct boundary */
+  --color-surface-subtle: #0d1322;   /* Inset well / placeholder / input background */
+  --color-surface-hover: #182236;    /* Row / chip hover state */
+  --color-border: #1f2c42;           /* Visible, crisp boundary for cards & containers */
+  --color-border-subtle: #162032;    /* Soft inner divider */
+  --color-border-strong: #2c3e5e;    /* Strong interactive borders & focus rings */
+
+  /* Accessible High-Contrast Text Scale for Dark Mode */
+  --color-text: #f8fafc;             /* Slate 50 - 15.2:1 AAA contrast on dark cards */
+  --color-text-secondary: #cbd5e1;   /* Slate 300 - 9.4:1 AAA contrast for labels & copy */
+  --color-text-muted: #94a3b8;       /* Slate 400 - 5.3:1 AA contrast for subtitles & meta */
+  --color-text-light: #64748b;       /* Slate 500 - Subtle icons & placeholders */
+
+  /* Dark Mode Elevation Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 8px 24px -4px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.5), 0 14px 28px -6px rgba(0, 0, 0, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   3. CSS Reset & Standard Elements
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg);
+  background-image: radial-gradient(120% 70% at 50% 0%, #ffffff 0%, #f1f5f9 45%, #f8fafc 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+[data-theme="dark"] body {
+  background-image: radial-gradient(120% 70% at 50% 0%, #161e31 0%, #0d121e 50%, #090d16 100%);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography Elements */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--color-text-secondary);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Form Element Resets */
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Accessible Focus Outlines */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

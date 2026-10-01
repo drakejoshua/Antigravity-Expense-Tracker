@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaMoon, FaSun } from 'react-icons/fa6';
 import { CATEGORIES } from './categories';
 import ExpenseForm from './components/ExpenseForm';
 import ExpenseFilter from './components/ExpenseFilter';
@@ -25,6 +26,9 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [editingExpense, setEditingExpense] = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
+  const [darkMode, setDarkMode] = useState(
+    () => localStorage.getItem('theme') === 'dark'
+  );
 
   // ---------------------------------------------------------------------------
   // 2. Persistence via localStorage
@@ -36,6 +40,18 @@ export default function App() {
       console.error('Failed to write expenses to localStorage:', err);
     }
   }, [expenses]);
+
+  // Sync dark mode preference: toggle data-theme on <html> and persist choice
+  useEffect(() => {
+    const root = document.documentElement;
+    if (darkMode) {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
 
   // ---------------------------------------------------------------------------
   // 3. Derived Calculations (Render-time, strictly no useMemo per requirements)
@@ -140,6 +156,16 @@ export default function App() {
     <div className="app-container">
       {/* App Header & Spending Metrics */}
       <header className="app-header">
+        <button
+          id="dark-mode-toggle"
+          className="dark-mode-toggle"
+          onClick={() => setDarkMode((prev) => !prev)}
+          aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          title={darkMode ? 'Light mode' : 'Dark mode'}
+          style={{ color: darkMode ? '#ffffff' : '#111827' }}
+        >
+          {darkMode ? <FaSun /> : <FaMoon />}
+        </button>
         <div className="header-brand">
           <span className="brand-badge">Personal Finance</span>
           <h1 className="app-title">Expense Tracker</h1>
